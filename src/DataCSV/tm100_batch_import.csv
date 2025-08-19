@@ -1,0 +1,11 @@
+name,slug,description,sku,price,trackInventory,stockOnHand,enabled,assets,customFields:analogInputs,customFields:brand,customFields:category,customFields:commercialStatus,customFields:communication,customFields:depth,customFields:digitalInputs,customFields:digitalOutputs,customFields:height,customFields:productType,customFields:programmingLanguage,customFields:statusCode,customFields:voltage,customFields:width,dimensions:depth,dimensions:height,dimensions:weight,dimensions:width
+"Modicon M100 24I/O ,C.A.220V, 14 intrari, 10 iesiri",modicon-m100-24i-o-c-a-220v-14-intrari-10-iesiri,"Modicon M100 24I/O ,C.A.220V, 14 intrari, 10 iesiri - Schneider Electric",TM100C24RN,635.05,TRUE,100,TRUE,https://download.se.com/files?p_Doc_Ref=TM100C24RN_Image_left&p_File_Type=rendition_1500_jpg,0,schneider,plc,Comercializat,Modbus,70 mm,14,10,90 mm,TM100,Ladder,others,230V,130 mm,,,"545,0 g",
+"Modicon M100 32I/O ,C.A.220V, 20 intrari, 12 iesiri",modicon-m100-32i-o-c-a-220v-20-intrari-12-iesiri,"Modicon M100 32I/O ,C.A.220V, 20 intrari, 12 iesiri - Schneider Electric",TM100C32RN,710.44,TRUE,100,TRUE,https://download.se.com/files?p_Doc_Ref=TM100C32RN_Image_bottom&p_File_Type=rendition_1500_jpg,0,schneider,plc,Comercializat,Modbus,70 mm,20,12,90 mm,TM100,Ladder,others,230V,175 mm,,,"640,0 g",
+"Modicon M100 40I/O ,C.A.220V, 24 intrari, 16 iesiri",modicon-m100-40i-o-c-a-220v-24-intrari-16-iesiri,"Modicon M100 40I/O ,C.A.220V, 24 intrari, 16 iesiri - Schneider Electric",TM100C40RN,836.06,TRUE,100,TRUE,https://download.se.com/files?p_Doc_Ref=TM100C40RN_Image_bottom&p_File_Type=rendition_1500_jpg,0,schneider,plc,Comercializat,Modbus,70 mm,24,14,90 mm,TM100,Ladder,others,230V,175 mm,,,"658,0 g",
+"Modicon M100 16I/O ,C.A.220V, 9 intrari, 7 iesiri",modicon-m100-16i-o-c-a-220v-9-intrari-7-iesiri,"Modicon M100 16I/O ,C.A.220V, 9 intrari, 7 iesiri - Schneider Electric",TM100C16RN,528.28,TRUE,100,TRUE,https://download.se.com/files?p_Doc_Ref=TM100C16RN_Image_front&p_File_Type=rendition_1500_jpg,0,schneider,plc,Comercializat,Modbus,70 mm,9,7,90 mm,TM100,Ladder,others,230V,110 mm,,,450 g,
+,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,0,,,,,,,,,,,,,,,,,,
