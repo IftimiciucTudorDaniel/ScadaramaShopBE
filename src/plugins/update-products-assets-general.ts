@@ -106,7 +106,7 @@ async function createAssetFromFile(assetService: AssetService, ctx: any, filePat
 async function updatetm251ProductsWithAssets() {
     console.log('🚀 Starting tm251 assets update...');
 
-    const csvPath = 'src/DataCSV/sxwasp_batch_import.csv';
+    const csvPath = 'src/DataCSV/sxwasb_batch_import.csv';
     if (!fs.existsSync(csvPath)) {
         console.error(`❌ CSV file not found: ${csvPath}`);
         console.error('💡 Make sure you have the tm251 CSV file in src/DataCSV/tm251_batch_import.csv');
