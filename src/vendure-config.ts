@@ -41,15 +41,15 @@ export const config: VendureConfig = {
     dbConnectionOptions: {
         type: 'postgres',
 
-        synchronize: true,
+        synchronize: false,
         migrations: [path.join(__dirname, './migrations/*.+(js|ts)')],
         logging: false,
-        database: process.env.DB_NAME,
         schema: process.env.DB_SCHEMA,
-        host: process.env.DB_HOST,
-        port: +process.env.DB_PORT,
-        username: process.env.DB_USERNAME,
-        password: process.env.DB_PASSWORD,
+        host: process.env.DATABASE_HOST || 'postgres_db',
+        port: Number(process.env.DATABASE_PORT) || 5432,
+        username: process.env.DATABASE_USERNAME || 'SCD',
+        password: process.env.DATABASE_PASSWORD || 'Scada123!',
+        database: process.env.DATABASE_NAME || 'SCD',
     },
     paymentOptions: {
         paymentMethodHandlers: [dummyPaymentHandler],
