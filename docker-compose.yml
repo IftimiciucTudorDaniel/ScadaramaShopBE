@@ -18,34 +18,6 @@ services:
         labels:
             - "io.vendure.create.name=my-shop"
 
-    mysql_db:
-        image: mysql:8
-        volumes:
-            - mysql_db_data:/var/lib/mysql
-        environment:
-            MYSQL_ROOT_PASSWORD: 'ROOT'
-            MYSQL_DATABASE: SCD
-            MYSQL_USER: SCD
-            MYSQL_PASSWORD: Scada123!
-        ports:
-            - "4306:3306"
-        labels:
-            - "io.vendure.create.name=my-shop"
-
-    mariadb_db:
-        image: mariadb:10
-        volumes:
-            - mariadb_db_data:/var/lib/mysql
-        environment:
-            MARIADB_ROOT_PASSWORD: 'ROOT'
-            MARIADB_DATABASE: SCD
-            MARIADB_USER: SCD
-            MARIADB_PASSWORD: Scada123!
-        ports:
-            - "3306:3306"
-        labels:
-            - "io.vendure.create.name=my-shop"
-
     # RECOMMENDED (especially for production)
     # Want to use our BullMQ with Redis instead of our default database job queue?
     # Checkout our BullMQ plugin: https://docs.vendure.io/reference/core-plugins/job-queue-plugin/bull-mqjob-queue-plugin/
@@ -88,16 +60,34 @@ services:
         labels:
             - "io.vendure.create.name=my-shop"
 
+    vendure_app:
+        image: node:18-alpine
+        container_name: scadarama-app
+        working_dir: /app
+        volumes:
+            - ./scadarama:/app
+        command: sh -c "npm install && npm run start"
+        ports:
+            - "3000:3000"
+        environment:
+            DATABASE_HOST: postgres_db
+            DATABASE_PORT: 5432
+            DATABASE_NAME: SCD
+            DATABASE_USERNAME: SCD
+            DATABASE_PASSWORD: Scada123!
+            REDIS_HOST: redis
+            REDIS_PORT: 6379
+            APP_ENV: production
+            SUPERADMIN_USERNAME: admin
+            SUPERADMIN_PASSWORD: SchimbaAdmin
+            COOKIE_SECRET: foarte_lung_random_string
+        depends_on:
+            - postgres_db
+            - redis
+            - typesense
+
 volumes:
     postgres_db_data:
-        driver: local
-        labels:
-            - "io.vendure.create.name=my-shop"
-    mysql_db_data:
-        driver: local
-        labels:
-            - "io.vendure.create.name=my-shop"
-    mariadb_db_data:
         driver: local
         labels:
             - "io.vendure.create.name=my-shop"
