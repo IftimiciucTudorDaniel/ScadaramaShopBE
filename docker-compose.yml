@@ -61,7 +61,7 @@ services:
             - "io.vendure.create.name=my-shop"
 
     vendure_app:
-        image: node:18-alpine
+        image: node:20-alpine
         container_name: scadarama-app
         working_dir: /app
         volumes:
