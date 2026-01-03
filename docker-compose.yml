@@ -1,12 +1,9 @@
-# INFORMATION
-# We are not exposing the default ports for the services in this file.
-# This is to avoid conflicts with existing services on your machine.
-# In case you don't have any services running on the default ports, you can expose them by changing the
-# ports section in the services block. Please don't forget to update the ports in the .env file as well.
+version: '3.9'
 
 services:
     postgres_db:
         image: postgres:16-alpine
+        container_name: scadaramashopbe-postgres_db-1
         volumes:
             - postgres_db_data:/var/lib/postgresql/data
         ports:
@@ -18,11 +15,9 @@ services:
         labels:
             - "io.vendure.create.name=my-shop"
 
-    # RECOMMENDED (especially for production)
-    # Want to use our BullMQ with Redis instead of our default database job queue?
-    # Checkout our BullMQ plugin: https://docs.vendure.io/reference/core-plugins/job-queue-plugin/bull-mqjob-queue-plugin/
     redis:
         image: redis:7-alpine
+        container_name: scadaramashopbe-redis-1
         ports:
             - "6479:6379"
         volumes:
@@ -30,12 +25,9 @@ services:
         labels:
             - "io.vendure.create.name=my-shop"
 
-    # RECOMMENDED
-    # Want to use Typesense instead of our default search engine?
-    # Checkout our advanced search plugin: https://vendure.io/hub/vendure-plus-advanced-search-plugin
-    # To run the typesense container run "docker compose up -d typesense"
     typesense:
         image: typesense/typesense:27.0
+        container_name: scadaramashopbe-typesense-1
         command: [ '--data-dir', '/data', '--api-key', 'SuperSecret' ]
         ports:
             - "8208:8108"
@@ -44,11 +36,9 @@ services:
         labels:
             - "io.vendure.create.name=my-shop"
 
-    # Want to use Elasticsearch instead of our default database engine?
-    # Checkout our Elasticsearch plugin: https://docs.vendure.io/reference/core-plugins/elasticsearch-plugin/
-    # To run the elasticsearch container run "docker compose up -d elasticsearch"
     elasticsearch:
         image: docker.elastic.co/elasticsearch/elasticsearch:7.1.1
+        container_name: scadaramashopbe-elasticsearch-1
         environment:
             discovery.type: single-node
             bootstrap.memory_lock: true
@@ -61,12 +51,15 @@ services:
             - "io.vendure.create.name=my-shop"
 
     vendure_app:
-        image: node:20-alpine
+        build:
+            context: .
+            dockerfile: Dockerfile
         container_name: scadarama-app
         working_dir: /app
         volumes:
-            - ./:/app
-        command: sh -c "npm install && npm run start"
+            - ./:/app                 # source code
+            - /app/node_modules       # container-only node_modules
+        command: npm run start
         ports:
             - "3000:3000"
         environment:
@@ -85,6 +78,7 @@ services:
             - postgres_db
             - redis
             - typesense
+        restart: unless-stopped
 
 volumes:
     postgres_db_data:
