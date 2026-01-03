@@ -65,7 +65,7 @@ services:
         container_name: scadarama-app
         working_dir: /app
         volumes:
-            - ./scadarama:/app
+            - ./:/app
         command: sh -c "npm install && npm run start"
         ports:
             - "3000:3000"
