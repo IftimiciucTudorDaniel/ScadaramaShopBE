@@ -1,9 +1,10 @@
 FROM node:20
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-COPY package.json ./
-COPY package-lock.json ./
+COPY package*.json ./
 RUN npm install
 COPY . .
 RUN npm run build
+
+CMD ["npm", "run", "start"]
